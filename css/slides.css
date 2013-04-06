@@ -1,0 +1,43 @@
+
+
+body{
+	background-color: black;
+	/*	background-image: url(http://www.freebestwallpapers.info/bulkupload//10/1//Animals/Green-Snake-Mania.jpg);*/
+}
+
+#portada{
+	width: 1450px;
+	height: 900px;
+}	
+
+#portada h1{
+	text-align: left;
+	font-size:75pt;
+	font-family: Gabriela;
+	margin-top: 2em;
+	margin-left: 3em;
+
+}
+
+#python_word{
+	color: #A3FF18;
+	font-size:85pt;
+}
+
+#adestrando{
+	color: white;
+}
+
+
+.names{
+	font-size: 18pt;
+	text-align: right;
+	font-family: Sintony;
+	margin-right: 5em;
+	color:white;
+}
+
+.step{
+	width: 1300px;
+	height: 800px;
+}
