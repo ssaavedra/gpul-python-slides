@@ -21,13 +21,35 @@ body{
 
 #python_word{
 	color: #A3FF18;
-	font-size:85pt;
+	font-size:90pt;
 }
 
 #adestrando{
 	color: white;
 }
 
+span.tw_cuenta{
+	color: #64CAD3;
+	font-weight: bold;
+}
+
+p{
+	font-size:65pt;
+	color: white;
+	font-family: Sintony;
+	text-align: center;
+}
+
+.key_word{
+	font-weight: bolder;
+	font-size: 70pt;
+	color:  #A3FF18;
+}
+
+.quotes{
+	font-weight: bolder;
+	font-size:75pt;
+}
 
 .names{
 	font-size: 18pt;
@@ -38,6 +60,8 @@ body{
 }
 
 .step{
-	width: 1300px;
+	width: 900px;
 	height: 800px;
+	vertical-align: middle;
+	text-align: center;
 }
