@@ -5,18 +5,19 @@ body{
 	/*	background-image: url(http://www.freebestwallpapers.info/bulkupload//10/1//Animals/Green-Snake-Mania.jpg);*/
 }
 
-#portada{
-	width: 1450px;
-	height: 900px;
-}	
+p{
+	font-size:65pt;
+	color: white;
+	font-family: Sintony;
+	text-align: center;
+	margin: auto;
+}
 
 #portada h1{
 	text-align: left;
 	font-size:75pt;
 	font-family: Gabriela;
-	margin-top: 2em;
-	margin-left: 3em;
-
+	margin-top:auto;
 }
 
 #python_word{
@@ -28,16 +29,18 @@ body{
 	color: white;
 }
 
+p.names{
+	font-size: 18pt;
+	text-align: right;
+	font-family: Sintony;
+	margin-right: -5em;
+	color:white;
+}
+
 span.tw_cuenta{
 	color: #64CAD3;
 	font-weight: bold;
-}
-
-p{
-	font-size:65pt;
-	color: white;
-	font-family: Sintony;
-	text-align: center;
+	font-size: 20pt;
 }
 
 .key_word{
@@ -46,22 +49,37 @@ p{
 	color:  #A3FF18;
 }
 
+pre{
+	font-size: 30pt;
+	text-align: left;
+	margin:auto;
+}
+
 .quotes{
 	font-weight: bolder;
-	font-size:75pt;
+	font-size:90pt;
 }
 
-.names{
-	font-size: 18pt;
-	text-align: right;
-	font-family: Sintony;
-	margin-right: 5em;
-	color:white;
-}
+
 
 .step{
-	width: 900px;
-	height: 800px;
-	vertical-align: middle;
+	width: 800px;
+	height: 600px;
 	text-align: center;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: center;
+
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	-moz-box-pack: center;
+
+	display: box;
+	box-orient: vertical;
+	box-pack: center;
+}
+
+.show_all{
+	width: 8000px;
+	height: 6000px;
 }
