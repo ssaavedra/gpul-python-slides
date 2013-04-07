@@ -1,0 +1,173 @@
+/*
+	Let us first reset the styles.
+	That's the one by Eric Meyer http://meyerweb.com/eric/tools/css/reset/
+
+	You can probably argue if it is needed here, or not, but for sure it
+	doesn't do any harm and gives us a fresh start.
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.impress-enabled .fallback-message {
+	display:none
+}
+
+/* -- Styles for the presentation -- */
+body {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 3em;
+
+    background: rgb(15, 15, 15);
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(50, 50, 50)), to(rgb(19, 19, 19)));
+    background: -webkit-radial-gradient(rgb(50, 50, 50), rgb(19, 19, 19));
+    background:    -moz-radial-gradient(rgb(50, 50, 50), rgb(19, 19, 19));
+    background:     -ms-radial-gradient(rgb(50, 50, 50), rgb(19, 19, 19));
+    background:      -o-radial-gradient(rgb(50, 50, 50), rgb(19, 19, 19));
+    background:         radial-gradient(rgb(50, 50, 50), rgb(19, 19, 19));
+}
+
+/* Hack so that .step bends nicely elastic */
+
+
+/* To test 800x600 */
+/*
+body {
+    width: 800px!important;
+    height: 600px!important;
+}
+.step {
+	width: 800px!important;
+	height: 600px!important;
+}
+*/
+
+.step{
+	vertical-align: middle;
+	text-align: center;
+	overflow:hidden;
+	box-sizing: border-box;
+	margin: 0 auto;
+	width: 900px;
+}
+
+#noportada{
+	--width: 1450px;
+	--height: 900px;
+}	
+
+#portada h1{
+	vertical-align: middle;
+	text-align: left;
+	font-size: 2.7em;
+	font-family: Gabriela;
+}
+
+#title {
+	color: #A3FF18;
+	font-size:1.5em;
+}
+
+#subtitle {
+	font-size: 0.8em;
+	color: white;
+	overflow:visible;
+}
+
+p {
+	font-size:inherit;
+	color: white;
+	font-family: Sintony;
+	text-align: center;
+}
+
+.key_word {
+	font-weight: bolder;
+	font-size: 2em;
+	color:  #A3FF18;
+}
+
+.quotes {
+	font-weight: bolder;
+	font-size:75pt;
+}
+
+
+
+
+footer {
+	margin:0;
+	position:relative;
+	bottom:-94%;
+	left:0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 0.4em;
+	text-align: right;
+	font-family: Sintony;
+	color:white;
+}
+
+
+/** Styles for links */
+a {
+	color: #64CAD3;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:visited {
+	color:inherit;
+}
+a:active {
+	color:inherit;
+}
+a:hover {
+	color: #74DAE3;
+	text-decoration: underline;
+}
+
+
