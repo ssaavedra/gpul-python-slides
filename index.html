@@ -6,48 +6,131 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
  	<meta charset="utf-8" />
 	<meta name="Author" content="Marcos Chavarria &amp; Santiago Saavedra" />
-	<link href="css/slides.css" rel="stylesheet"/>
 	<link href='http://fonts.googleapis.com/css?family=Gabriela|Sintony:700,400' rel='stylesheet' type='text/css'>
 
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<link rel="stylesheet" href="reveal.js/css/reveal.min.css" />
+	<link rel="stylesheet" href="style.css" id="theme" />
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css" />
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+		document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
 </head>
-<body class="impress-not-supported">
-	<!--<div class="fallback-message">
-		Your browser does not support the needed capabilities for impress.js to work, so you'll be presented with a less nice version of it.
-	</div>
-	-->
-	<div id="impress">
-
-		<div id="portada" class="step" data-x="0" data-y="-2500">
-			<h1> <span id="title">Python.</span><br><span id="subtitle"> Adestrando Serpes</span></h1>
-		</div>
-
-		<div class="step" data-x="-1500" data-y="-1500">
-			<p>Linguaxe <span class="key_word">Libre</span>, <span class="key_word">Interpretada</span>, <span class="key_word">Multiplataforma</span> e <span class="key_word">Multiparadigma</span>.</p>
-		</div>
-
-		<div class="step" data-x="0" data-y="-1500">
-			<p>Centrase na <span class="key_word">axilidade</span> a hora de programar e na <span class="key_word">lexibilidade</span> do código</p>
-		</div>
-
-		<div class="step" data-x="1500" data-y="-1500">
-			<p><span class="quotes">"</span>Python comes with <span class="key_word">batteries included</span><span class="quotes">"</span></p>
-		</div>
 
 
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
 
-	</div>
+		<section id="portada">
+			<h1>Python.</h1>
+			<h2>Adestrando Serpes</h2>
+		</section>
 
-			<footer class="authors">
-				<div style="float:left">IMAGEN</div>
-				<ul>
-								<li>Marcos Chavarría Teijeiro	<span class="tw_cuenta">
-												<a class="tw_cuenta" href="http://twitter.com/chavarria1991">(@chavarria1991)</a></li>
-								<li> Santiago Saavedra López <a class="tw_cuenta" href="http://twitter.com/ssice">(@ssice)</a> </li>
+		<section>
+			<section>
+			<h2> <em>Python</em> é unha linguaxe: </h2>
+				<ul style="text-align:left; display:inline">
+					<li class="fragment inline">Libre </li>
+					<li class="fragment inline">, Áxil</li>
+					<li class="fragment inline">, Multiparadigma</li>
+					<li class="fragment inline">, Interpretada¹</li>
+					<li class="fragment inline">, Multiplataforma¹</li>
 				</ul>
-			</footer>
+				<footer class="fragment">¹, refírese ao intérprete de referencia.</footer>
+				<aside class="notes">
+				Recordar que non se pode falar de linguaxes interpretadas.
+				Linguaxe != compilador.
 
-	<script src="impress.js/js/impress.js"></script>
-	<script>impress().init();</script>
+				</aside>
+			</section>
+			<section>
+				<h2>Libre</h2>
+				<p>Especificación: <a href="http://docs.python.org">http://docs.python.org</a></p>
+
+			</section>
+			<section><h2>Interpretada</h2>
+			<p>A implementación de referencia, <kbd>CPython</kbd> é un <em>intérprete</em> da linguaxe.
+			Aínda así, é <em>rápido</em>, pois permite incluir extensións nativas.</p>
+			<p class="fragment">Se necesitas velocidade: compílao en C e impórtao en Python logo.</p>
+			<p class="fragment">Hai alternativas, e falaremos delas.</p>
+			<ul class="fragment">
+				<li>PyPy (intérprete con recolección de basura)</li>
+				<li>CPython (compilador para extensións)</li>
+				<li>IronPython</li>
+				<li>JPython</li>
+				<li>...</li>
+			</ul>
+			</section>
+		</section>
+
+		<section class="step" data-x="0" data-y="-1500">
+		<p>Centrase na <em>axilidade</em> á hora de programar e na <em>lexibilidade</em> do código</p>
+		</section>
+
+		<section>
+		<blockquote>Python comes with <em>batteries included</em></blockquote>
+		</section>
+
+
+
+	</div>
+
+</div>
+
+<footer class="authors">
+	<div style="float:right;text-align:left; margin-right: 0">
+	<ul>
+		<li>Marcos Chavarría Teijeiro	<span class="tw_cuenta">
+						<a class="tw_cuenta" href="http://twitter.com/chavarria1991">(@chavarria1991)</a></li>
+		<li> Santiago Saavedra López <a class="tw_cuenta" href="http://twitter.com/ssice">(@ssice)</a> </li>
+	</ul>
+	</div>
+</footer>
+
+	<script src="reveal.js/lib/js/head.min.js"></script>
+	<script src="reveal.js/js/reveal.min.js"></script>
+
+	<script>
+
+		// Full list of configuration options available here:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+			transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+			// Optional libraries used to extend on reveal.js
+			dependencies: [
+				{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+				// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+		]
+		});
+
+	</script>
+
 </body>
 </html>
 
