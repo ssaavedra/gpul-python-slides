@@ -80,17 +80,157 @@
 		</section>
 
 		<section>
-		<h2>Como se dice hola?</h2>
+		<h2>Como se di ola?</h2>
 		<pre><code>
 #!/usr/bin/env python
-print 'Hola mundo!'
+print 'Ola mundo!'
 		</code></pre>
 		<h3 class="fragment">Fácil! ☺</h3>
 		</section>
 
 		<section>
+			<section><h2>Tipos de datos.</h2></section>
+
+			<section>
+				<ul>
+					<li>str</li>
+					<li>unicode</li>
+					<li>list</li>
+					<li>tuple</li>
+					<li>set</li>
+					<li>frozenset</li>
+					<li>dict</li>
+					<li><a href="#/dt_int">int</a></li>
+					<li><a href="#/dt_int">long</a></li>
+					<li><a href="#/dt_int">float</a></li>
+					<li><a href="#/dt_int">complex</a></li>
+					<li>bool</li>
+				</ul>
+
+			</section>
+
+			<section id="dt_int">
+				<h2>Números</h2>
+
+				<ul>
+					<li>Números enteiros: <code>int</code></li>
+					<li>Números grandes: <code>long</code></li>
+					<li>Números en punto flotante: <code>float</code></li>
+					<li>Números complexos! <code>complex</code></li>
+				</ul>
+				<pre class="fragment"><code>
+numero_enteiro = 500
+numero_longo = 23988123791824723948712491287412948127942184
+numero_longo2 = 5L
+numero_float = 3.1415926
+numero_complex = (1+1j)
+				</code></pre>
+
+			</section>
+			<section>
+				<h2>Cadenas de caracteres</h2>
+				<p>
+				En Python 2 hai dous tipos:
+				</p>
+				<ul>
+					<li>str (solo ascii)</li>
+					<li>unicode</li>
+				</ul>
+
+				<pre class="fragment"><code>
+string1 = 'Ola mundo'
+string2 = "Ola mundo"
+string3 = "Ola 'señor'"
+string4 = """
+Isto é un string multiliña
+que ocupa dúas liñas.
+"""
+
+ustring1 = u'Ola mundo'
+# O resto podedes imaxinalos...
+				</code></pre>
+
+
+			</section> 
+
+			<section>
+				<h2>Outras secuencias</h2>
+				<dl>
+					<dt>Listas</dt>
+					<dd>Mutables, con orde. </dd>
+					<dt>Tuplas</dt>
+					<dd>Inmutables, con orde.</dd>
+					<dt>Diccionarios</dt>
+					<dd>Mutables, ordenados por clave.</dd>
+					<dt>Conxuntos</dt>
+					<dd>Mutables e inmutables, sen orde e sen elementos repetidos.</dd>
+				</dl>
+
+			</section>
+
+			<section>
+				<h2>E como uso eu isto?</h2>
+				<p>Para acceder a un elemento da lista,
+					<pre><code>l[posicion]</code></pre>
+				Para obter unha sublista,
+					<pre><code>l[inicio:fin]</code></pre>
+				Para borrar un elemento,
+					<pre><code>del l[pos]
+# Ou ben
+l.delete(pos)</code></pre>
+				Para engadir elementos nunha lista,
+					<pre><code>l.append(elemento)</code></pre>
+				Concatenar listas
+					<pre><code>l3 = l1 + l2</code></pre>
+				...
+
+			</section>
+			<section class="demo">
+
+				<aside class="notes">
+				DEMO. Facer caralladas co operador []
+				<pre>
+l = [1, 2, 4, 3, 7]
+l.append(5)
+
+l.pop()
+
+l2 = l[1:4]
+
+l3 = l + l2
+
+tupla = (1, 2, 3)
+tupla1 = (1,)
+
+tupla[1]
+
+len(tupla)
+				</pre>
+				</aside>
+				
+			</section>
+
+			<section>
+				<h2>Booleanos</h2>
+				Só hai dous, <code>True</code> e <code>False</code>.
+			</section>
+
+
+			
+		</section>
+
+		<section>
 			<section>
 			<h2>Estruturas de <em>control</em>.</h2>
+			</section>
+			<section>
+			<p>Xa estades acostumbrados.</p>
+			<ul>
+				<li><code>if &lt;cond>:</code></li>
+				<li><code>while &lt;cond>:</code></li>
+				<li><code>for x in &lt;iterable>:</code></li>
+			</ul>
+			<p class="fragment" style="margin-top:20px"><code class="bigger">for x in iterable</code>??</p>
 			</section>
 		</section>
 		
@@ -100,10 +240,6 @@ print 'Hola mundo!'
 
 		<section>
 			<h2>Tratamento de excepcións.</h2>
-		</section>
-
-		<section>
-			<h2>Tipos de datos.</h2>
 		</section>
 
 		<section>
@@ -198,7 +334,9 @@ print 'Hola mundo!'
 				{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 				{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-				{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: '/socket.io/socket.io.js', async: true },
+				{ src: 'notes-server/client.js', async: true },
 				// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
 				// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 		]

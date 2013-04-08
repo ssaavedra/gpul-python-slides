@@ -207,4 +207,16 @@ body {
 .reveal a.nonfancy {
 }
 
+.reveal section.demo:before {
+	content: 'DEMO';
+	color: #F84E48;
+	font-family: Helvetica, sans-serif;
+	font-weight: bolder;
+	font-size: 4em;
+}
+
+.reveal section.demo.past:before {
+	color: #4EF848;
+}
+
 
