@@ -219,4 +219,8 @@ body {
 	color: #4EF848;
 }
 
+.reveal code.small {
+	font-size: 0.75em;
+}
+
 

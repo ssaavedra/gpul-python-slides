@@ -340,14 +340,63 @@ len(tupla)
 		
 		<section>
 			<h2>Definición de <em>funcións</em>.</h2>
+			</section>
+
+		<section>
+			<section>
+				<h2>Tratamento de <em>excepcións</em>.</h2>
+				<ul>
+					<li>En Python considérase normal que ocorran excepcións no programa.</li>
+				</ul>
+			</section>
 		</section>
 
 		<section>
-			<h2>Tratamento de <em>excepcións</em>.</h2>
-		</section>
+			<section>
+				<h2>Características <em>funcionais</em>.</h2>
+			</section>
+			<section>
+			<ul>
+				<li class="fragment"><code>List comprehensions</code></li>
+				<li class="fragment"><code><a href="http://docs.python.org/2/library/functions.html#map">map</a>(lambda x: f(x), iterable)</code></li>
+				<li class="fragment"><code><a href="http://docs.python.org/2/library/functions.html#filter">filter</a>(lambda x: x > 5, iterable)</code></li>
+				<li class="fragment"><code><a href="http://docs.python.org/2/library/functions.html#reduce">reduce</a>(lambda x,y: f(x,y), iterable)</code></li>
+			</ul>
+			</section>
 
-		<section>
-			<h2>Características <em>funcionais</em>.</h2>
+			<section>
+				<h2>Multiplicamos por 2 os elementos dunha lista?</h2>
+				<pre><code>
+alist = [2, 3, 4, 6, 8]
+newlist = []
+for i in alist:
+	newlist[i] = 2 * alist[i]
+				</code></pre>
+
+				<pre class="fragment"><code>
+newlist = [ 2 * x for x in alist ]
+				</code></pre>
+
+				<pre class="fragment"><code>
+newlist = map(lambda x: 2 * x, alist)
+				</code></pre>
+			</section>
+
+			<section>
+				<h2>E coller os maiores a 5</h2>
+				<pre><code>
+alist = [2, 3, 4, 6, 8]
+				</code></pre>
+				<pre class="fragment"><code>
+newlist = map(lambda x: 2 * x, alist)
+newlist = filter(lambda x: x > 5, alist)
+				</code></pre>
+
+				<pre class="fragment"><code>
+newlist = [ 2 * x for x in alist if x > 5 ]
+				</code></pre>
+
+			</section>
 		</section>
 
 		<section>
@@ -355,7 +404,134 @@ len(tupla)
 		</section>
 
 		<section>
-			<h2><em>Xeneradores</em></h2>
+			<section>
+				<h2><em>Xeneradores</em></h2>
+				<p>Cando traballar con listas non é suficiente.</p>
+				<p>Problema: E se quero mostrar a sucesión para calcular o factorial de n?</p>
+				<pre><code># Resultado esperado
+>>> f_explain(5)
+5 # * f_explain(4)
+20 # * f_explain(3)
+60 # * f_explain(2)
+120 # * f_explain(1)
+120 # * f_explain(0)
+120
+>>> </code></pre>
+				List comprehension non é boa idea.
+				Definamos unha función.
+				<pre><code>def the_real_f(n):
+	if n == 0:
+		return 1
+	elif n &lt; 0:
+		raise <a href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError">ValueError</a>("f is only defined for positive numbers.")
+	else:
+		return n * f_explain(n - 1) </code></pre>
+			</section>
+
+			<section>
+				<h2><em>Xeneradores</em></h2>
+				<p>Nova palabra clave: <code><a href="http://docs.python.org/2/reference/simple_stmts.html#the-yield-statement">yield</a></code>.</p>
+				<p>Como <code>return</code> pero para xeneradores.</p>
+				<pre><code>def f_iterative(n):
+	if n &lt; 0:
+		raise <a href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError">ValueError</a>("f is only defined for positive numbers.")
+	val = 1
+	while n > 1:
+		val *= n
+		n = n - 1
+	return val </code></pre>
+	
+				<pre class="fragment"><code>def f_explain(n):
+	val = 1
+	while n > 1:
+		val *= n
+		n = n - 1
+		yield val
+	yield val </code></pre>
+				
+				<p class="fragment"> <strong>NO RETURN.</strong><br />
+				<code class="small">SyntaxError: 'return' with argument inside generator</code>
+				</p>
+
+				<aside class="notes">
+				Esta traspa ten 3 pasos.
+				<ul><li>Non se pode usar 'return'</li>
+					<li>Múltiples "returns"</li>
+					<li>Returns "parciais"</li>
+					<li>yield recorda onde estaba</li>
+					<li>O obxecto devolto por f_explain é un obxecto generator.</li></ul>
+				</aside>
+			</section>
+
+			<section>
+				<h2>Xeneradores</h2>
+				<h3>Exemplo real</h3>
+				<pre><code style="min-height:23em">class Node(object):
+	def __init__(self, left=None, right=None):
+		self.left = left, self.right = right
+		# Anything else...
+
+	def get_inorder_list(self):
+		'''
+		Returns a list of the order in
+		in-order position
+		'''
+		for elt in this.left.get_inorder_list():
+			# Yield all elements before me, inorder
+			yield elt 
+
+		yield self # Yield ourselves
+
+		for elt in this.right.get_inorder_list():
+			# Yield all elements after me, inorder
+			yield elt </code></pre>
+			</section>
+
+			<section>
+				<h2>Xeneradores</h2>
+				<h3>Utilidade</h3>
+				<ul>
+					<li>Método estándar para iterar (<code class="small">for x in &lt;iterable></code>)</li>
+					<li>Posibilidade de traballar con listas potencialmente infinitas.</li>
+					<li>Posibilidade de traballar con outros elementos potencialmente infinitos (árbores, grafos...).</li>
+				</ul>
+
+				<pre><code>ab = mult(myhugelist, 6)</code></pre>
+				<pre class="fragment"><code>def mult(iterable, num):
+	iterator = <a href="http://docs.python.org/2/library/functions.html#iter">iter</a>(iterable)
+	while True:
+		yield <a href="http://docs.python.org/2/library/functions.html#next">next(iterator)</a> * num</code></pre>
+			</section>
+
+			<section>
+				<h2>Xeneradores</h2>
+				<h3>Eficientes?</h3>
+				<ul>
+					<li>Cada chamada a <code><a href="http://docs.python.org/2/library/stdtypes.html#iterator.next">it.next()</a></code> calcula só un elemento.</li>
+					<li>Unha list comprehension calcula todos os elementos.</li>
+				</ul>
+
+				<p>Programación <em>lazy</em> vs. programación <em>eager</em>.</p>
+
+			</section>
+
+			<section>
+				<h2>Xeneradores</h2>
+				<ul>
+					<li>Pero moito xa está feito!</li>
+					<li>O módulo <a href="http://docs.python.org/2/library/itertools.html">itertools</a>
+					<ul>
+						<li>chain(it1, it2)</li>
+						<li>imap()</li>
+						<li>ifilter()</li>
+						<li>islice()</li>
+						<li>starmap()</li>
+						<li>izip()</li>
+						<li>takewhile()</li>
+					</ul>
+					</li>
+				</ul>
+			</section>
 		</section>
 
 		<section>
