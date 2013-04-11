@@ -35,7 +35,7 @@
 		<div class="slides">
 
 		<section id="portada">
-			<h1>Python.</h1>
+			<h1><em>Python</em>.</h1>
 			<h2>Adestrando Serpes</h2>
 		</section>
 
@@ -89,7 +89,7 @@ print 'Ola mundo!'
 		</section>
 
 		<section>
-			<section><h2>Tipos de datos.</h2></section>
+			<section><h2><em>Tipos</em> de datos.</h2></section>
 
 			<section>
 				<ul>
@@ -130,10 +130,10 @@ numero_complex = (1+1j)
 			<section>
 				<h2>Cadenas de caracteres</h2>
 				<p>
-				En Python 2 hai dous tipos:
+				Temos dous tipos:
 				</p>
 				<ul>
-					<li>str (solo ascii)</li>
+					<li>str (so caracteres ascii)</li>
 					<li>unicode</li>
 				</ul>
 
@@ -156,20 +156,117 @@ ustring1 = u'Ola mundo'
 			<section>
 				<h2>Outras secuencias</h2>
 				<dl>
-					<dt>Listas</dt>
+					<dt><em>Listas</em></dt>
 					<dd>Mutables, con orde. </dd>
-					<dt>Tuplas</dt>
+					<dt><em>Tuplas</em></dt>
 					<dd>Inmutables, con orde.</dd>
-					<dt>Diccionarios</dt>
+					<dt><em>Diccionarios</em></dt>
 					<dd>Mutables, ordenados por clave.</dd>
-					<dt>Conxuntos</dt>
-					<dd>Mutables e inmutables, sen orde e sen elementos repetidos.</dd>
+					<dt><em>Conxuntos</em></dt>
+					<dd>Mutables (ou inmutables), sen orde e sen elementos repetidos.</dd>
 				</dl>
 
 			</section>
 
 			<section>
-				<h2>E como uso eu isto?</h2>
+				<h2>E <em>como</em> uso eu isto?</h2>
+
+			</section>
+
+			<section>
+
+				<h2>Definicion</h2>
+
+				<dl>
+
+					<dt><em>Listas</em></dt>
+					<dd><pre><code>
+lista = [1,2,3,45]
+					</code></pre></dd>
+					<dt><em>Tuplas</em></dt>
+					<dd><pre><code>
+tupla = (3,2,3)
+tupla2 = (2,)
+					</code></pre></dd>
+				</dl>
+			</section>
+			<section>
+				<h2>Definición</h2>
+					<em>Dicionarios</em>
+					<pre><code>
+dicionario = {"clave1":32, "clave2":3, 42:4}
+					</code></pre>
+					<em>Conxuntos</em>
+					<pre><code>
+#A partir doutras secuencias
+conxunto = set([1,2,4,4])
+conxunto2 = set("batman")
+					</code></pre>
+
+			</section>
+			<section>
+				<h2>Acceder aos elementos</h2>
+					<em>Listas e Tuplas</em>
+					<pre><code>
+lista = [1,2,3,4,5,6,7]
+#Acceder a un elemento
+lista[2]
+lista[-1]
+
+#Acceder a unha sub-secuencia
+lista[3:4]
+lista[1:]
+lista[0:6:2]
+					</code></pre>
+
+				<em>Dicionarios</em>
+					<pre><code>
+dicionario = {"clave1":32, "clave2":3}
+
+#Accedese a través da clave.
+dicionario["clave1"]
+					</code></pre>
+			</section>
+
+			<section>
+			<h2>Acceder aos elementos</h2>
+			<em>E os conxuntos?</em>
+			<pre><code>
+conx = set([1,2,3,4,1,5])
+
+#Podemos saber se un elemento esta no conxunto
+5 in conx
+
+#Podemos recorrer os elementos usando un for
+for a in conx:
+	print a
+			</code></pre>
+
+			</section>
+
+
+			<section>
+				<h2><em>Engadir</em>, <em>modificar</em> e <em>borrar</em> elementos</h2>
+				<em>Listas</em>
+				<pre><code>
+lista = []
+lista.append(12)
+lista[0] = 21
+lista.remove(21)
+				</code></pre>
+
+				<em>Dicionarios</em>
+				<pre><code>
+dicionario = {}
+dicionario["clave"] = 12
+dicionario["clave"] = 21
+dicionario.pop("clave") #Devolve o valore e elimina a entrada.
+				</code></pre>
+
+
+			</section>
+<!--
+			<section>
 				<p>Para acceder a un elemento da lista,
 					<pre><code>l[posicion]</code></pre>
 				Para obter unha sublista,
@@ -185,12 +282,26 @@ l.delete(pos)</code></pre>
 				...
 
 			</section>
+	-->		
+
+			<section>
+				<h2>Booleanos</h2>
+				Só hai dous, <em>True</em> e <em>False</em>.
+			</section>
+
 			<section class="demo">
 
 				<aside class="notes">
-				DEMO. Facer caralladas co operador []
+				DEMO. 
+
 				<pre>
-l = [1, 2, 4, 3, 7]
+#Definir unha lista
+l = [0,1, 2, 4, 3, 7]
+l = range(8)
+l[0]
+l[6]
+l[-3]
+l[1:4]
 l.append(5)
 
 l.pop()
@@ -209,13 +320,6 @@ len(tupla)
 				</aside>
 				
 			</section>
-
-			<section>
-				<h2>Booleanos</h2>
-				Só hai dous, <code>True</code> e <code>False</code>.
-			</section>
-
-
 			
 		</section>
 
@@ -235,38 +339,38 @@ len(tupla)
 		</section>
 		
 		<section>
-			<h2>Definición de funcións.</h2>
+			<h2>Definición de <em>funcións</em>.</h2>
 		</section>
 
 		<section>
-			<h2>Tratamento de excepcións.</h2>
+			<h2>Tratamento de <em>excepcións</em>.</h2>
 		</section>
 
 		<section>
-			<h2>Características funcionais.</h2>
+			<h2>Características <em>funcionais</em>.</h2>
 		</section>
 
 		<section>
-			<h2>Orientación a obxectos.</h2>
+			<h2><em>Orientación</em> a <em>obxectos</em>.</h2>
 		</section>
 
 		<section>
-			<h2>Xeneradores</h2>
+			<h2><em>Xeneradores</em></h2>
 		</section>
 
 		<section>
-			<h2>Testing</h2>
+			<h2><em>Testing</em></h2>
 		</section>
 
 		<section>
-			<h2>Decoradores</h2>
+			<h2><em>Decoradores</em></h2>
 		</section>
 
 	
 		<section>
 
 			<section>
-				<h2>Implementacións</h2>
+				<h2><em>Implementacións</em></h2>
 			</section>
 
 			<section id="libre">
@@ -294,7 +398,7 @@ len(tupla)
 		</section>
 
 		<section>
-			<h2>Python 3</h2>
+			<h2>Python <em>3</em></h2>
 		</section>
 
 	</div>
