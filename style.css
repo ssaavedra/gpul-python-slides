@@ -226,6 +226,12 @@ body {
   -webkit-column-width:30em; /* Safari and Chrome */
   column-width:30em;
   -moz-column-gap:10em; /* Firefox */
--webkit-column-gap:10em; /* Safari and Chrome */
-column-gap:10em;
+  -webkit-column-gap:10em; /* Safari and Chrome */
+  column-gap:10em;
 }
+
+.reveal code.small {
+	font-size: 0.75em;
+}
+
+
