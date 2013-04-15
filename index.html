@@ -154,7 +154,7 @@ ustring1 = u'Ola mundo'
 				</code></pre>
 
 
-			</section> 
+			</section>
 
 			<section>
 				<h2>Outras secuencias</h2>
@@ -285,7 +285,7 @@ l.delete(pos)</code></pre>
 				...
 
 			</section>
-	-->		
+	-->
 
 			<section>
 				<h2>Booleanos</h2>
@@ -299,7 +299,7 @@ l.delete(pos)</code></pre>
 					</li>
 					<li>A <em>cadea</em> baleira <pre><code>""</code></pre>
 					</li>
-					<li>As <em>listas</em>, <em>tuplas</em> e <em>dicionarios</em> baleiros 
+					<li>As <em>listas</em>, <em>tuplas</em> e <em>dicionarios</em> baleiros
 						<pre><code>[]
 ()
 {}</code></pre>
@@ -315,7 +315,7 @@ l.delete(pos)</code></pre>
 			<section class="demo">
 
 				<aside class="notes">
-				DEMO. 
+				DEMO.
 
 				<pre>
 #Definir unha lista
@@ -341,9 +341,7 @@ tupla[1]
 len(tupla)
 				</pre>
 				</aside>
-				
 			</section>
-			
 		</section>
 
 		<section>
@@ -357,7 +355,7 @@ len(tupla)
 					</ul>
 				</div>
 			</section>
-		
+
 			<section>
 				<h2><em>if </em> &lt;cond><em>:</em></h2>
 				<pre><code>if &lt;cond>:
@@ -381,31 +379,94 @@ else:
 				<h2><em>for</em> x <em>in</em>  &lt;iterable><em>:</em></h2>
 				<pre><code>for x in &lt;iterable>:
 	print x</code></pre>
-			
-			<p>Un <em>iterable</em> é calquera das secuencias de antes: <em>cadeas</em>, <em>listas</em>, <em>tuplas</em>, <em>dicionarios </em> e <em>conxuntos</em>.</p>
 
+			<p class="fragment">Un <em>iterable</em> pode ser <small>(entre outros)</small> calquera das secuencias de antes: <em>cadeas</em>, <em>listas</em>, <em>tuplas</em>, <em>dicionarios </em> e <em>conxuntos</em>.</p>
 
+			</section>
+
+			<section>
+				<h2>A función <em>enumerate</em></h2>
+				<pre class="fragment"><code>>>>for i,x in enumerate([23,43]):
+...    print "No índice ", i, " gárdase o valor ", x
+No índice  0  gárdase o valor  23
+No índice  1  gárdase o valor  43
+</code></pre>
+			</section>
+
+			<section>
+				<h2>E onde está o <em>"switch"</em>?</h2>
+				<p>Non hai!<p>
+
+			</section>
+			<section>
+				<h2><em>Alternativas</em> ao switch</h2>
+				<ul>
+					<li>Secuencia de <em>if</em>'s e <em>elif</em>'s <pre><code>if valor == 1:
+	pass
+elif valor == 2:
+	pass
+</code></pre></li>
+					<li><em>Dicionarios</em> (Mellor!) <pre><code>def f_1 ():
+	pass
+
+def f_2 ():
+	pass
+
+d = { 1:f_1, 2:f_2}
+
+d[valor]()
+</code></pre></li>
+
+				</ul>
 			</section>
 
 		</section>
-		
+
 		<section>
 			<h2>Definición de <em>funcións</em>.</h2>
-			</section>
+
+			<pre><code>def nomefuncion (par1, par2):
+	"""
+	Isto é un docstring e sirve para documentar as funcións.
+	"""
+	return par1 + par2
+</code></pre>
+
+		</section>
 
 		<section>
 			<section>
 				<h2>Tratamento de <em>excepcións</em>.</h2>
-				<ul>
-					<li>En Python considérase normal que ocorran excepcións no programa.</li>
-				</ul>
+				<p>En Python considérase <em>normal</em> que ocorran excepcións no programa.</p>
 			</section>
+
+			<section>
+				<h2>Excepcións</h2>
+				<p><em>Capturar</em> excepcións</p>
+				<pre><code>try:
+	pass
+except Exception:
+	pass</code></pre>
+
+				<p><em>Lanzar</em> excepcións</p>
+				<pre><code>raise Exception</code></pre>
+			</section>
+
+			<section class="demo">
+				<aside class="notes">
+				DEMO.
+
+				</aside>
+
+			</section>
+
 		</section>
 
 		<section>
 			<section>
 				<h2>Características <em>funcionais</em>.</h2>
 			</section>
+
 			<section>
 			<ul>
 				<li class="fragment"><code>List comprehensions</code></li>
@@ -491,7 +552,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 		val *= n
 		n = n - 1
 	return val </code></pre>
-	
+
 				<pre class="fragment"><code>def f_explain(n):
 	val = 1
 	while n > 1:
@@ -499,7 +560,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 		n = n - 1
 		yield val
 	yield val </code></pre>
-				
+
 				<p class="fragment"> <strong>NO RETURN.</strong><br />
 				<code class="small">SyntaxError: 'return' with argument inside generator</code>
 				</p>
@@ -529,7 +590,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 		'''
 		for elt in this.left.get_inorder_list():
 			# Yield all elements before me, inorder
-			yield elt 
+			yield elt
 
 		yield self # Yield ourselves
 
@@ -593,7 +654,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			<h2><em>Decoradores</em></h2>
 		</section>
 
-	
+
 		<section>
 
 			<section>
@@ -635,9 +696,8 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 <footer class="authors">
 	<div style="float:right;text-align:left; margin-right: 0">
 	<ul>
-		<li>Marcos Chavarría Teijeiro	<span class="tw_cuenta">
-						<a class="tw_cuenta" href="http://twitter.com/chavarria1991">(@chavarria1991)</a></li>
-		<li> Santiago Saavedra López <a class="tw_cuenta" href="http://twitter.com/ssice">(@ssice)</a> </li>
+		<li>Marcos Chavarría Teijeiro <a class="tw_cuenta" href="http://twitter.com/chavarria1991">(@chavarria1991)</a></li>
+		<li>Santiago Saavedra López <a class="tw_cuenta" href="http://twitter.com/ssice">(@ssice)</a> </li>
 	</ul>
 	</div>
 </footer>
