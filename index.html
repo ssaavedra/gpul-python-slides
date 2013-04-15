@@ -4,7 +4,7 @@
 	<title>Introduction to Python</title>
 	<meta name="viewport" content="width=1024" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
- 	<meta charset="utf-8" />
+	<meta charset="utf-8" />
 	<meta name="Author" content="Marcos Chavarria &amp; Santiago Saavedra" />
 	<link href='http://fonts.googleapis.com/css?family=Gabriela|Sintony:700,400' rel='stylesheet' type='text/css'>
 
@@ -89,23 +89,26 @@ print 'Ola mundo!'
 		</section>
 
 		<section>
-			<section><h2><em>Tipos</em> de datos.</h2></section>
-
 			<section>
-				<ul>
-					<li>str</li>
-					<li>unicode</li>
-					<li>list</li>
-					<li>tuple</li>
-					<li>set</li>
-					<li>frozenset</li>
-					<li>dict</li>
-					<li><a href="#/dt_int">int</a></li>
-					<li><a href="#/dt_int">long</a></li>
-					<li><a href="#/dt_int">float</a></li>
-					<li><a href="#/dt_int">complex</a></li>
-					<li>bool</li>
-				</ul>
+				<h2><em>Tipos</em> de datos.</h2>
+				<div id="tipos_de_datos">
+					<ul>
+						<li>str</li>
+						<li>unicode</li>
+						<li>list</li>
+						<li>tuple</li>
+						<li>set</li>
+						<li>frozenset</li>
+					</ul>
+					<ul>
+						<li>dict</li>
+						<li><a href="#/dt_int">int</a></li>
+						<li><a href="#/dt_int">long</a></li>
+						<li><a href="#/dt_int">float</a></li>
+						<li><a href="#/dt_int">complex</a></li>
+						<li>bool</li>
+					</ul>
+				</div>
 
 			</section>
 
@@ -113,10 +116,10 @@ print 'Ola mundo!'
 				<h2>Números</h2>
 
 				<ul>
-					<li>Números enteiros: <code>int</code></li>
-					<li>Números grandes: <code>long</code></li>
-					<li>Números en punto flotante: <code>float</code></li>
-					<li>Números complexos! <code>complex</code></li>
+					<li>Números <em>enteiros</em>: <code>int</code></li>
+					<li>Números <em>grandes</em>: <code>long</code></li>
+					<li>Números en <em>punto flotante</em>: <code>float</code></li>
+					<li>Números <em>complexos</em>! <code>complex</code></li>
 				</ul>
 				<pre class="fragment"><code>
 numero_enteiro = 500
@@ -128,12 +131,12 @@ numero_complex = (1+1j)
 
 			</section>
 			<section>
-				<h2>Cadenas de caracteres</h2>
+				<h2>Cadeas de caracteres</h2>
 				<p>
 				Temos dous tipos:
 				</p>
 				<ul>
-					<li>str (so caracteres ascii)</li>
+					<li>str (so caracteres <em>ASCII</em>)</li>
 					<li>unicode</li>
 				</ul>
 
@@ -151,7 +154,7 @@ ustring1 = u'Ola mundo'
 				</code></pre>
 
 
-			</section> 
+			</section>
 
 			<section>
 				<h2>Outras secuencias</h2>
@@ -206,7 +209,7 @@ conxunto2 = set("batman")
 			</section>
 			<section>
 				<h2>Acceder aos elementos</h2>
-					<em>Listas e Tuplas</em>
+					<em>Listas, Tuplas (e Strings!!)</em>
 					<pre><code>
 lista = [1,2,3,4,5,6,7]
 #Acceder a un elemento
@@ -282,17 +285,37 @@ l.delete(pos)</code></pre>
 				...
 
 			</section>
-	-->		
+-->
 
 			<section>
 				<h2>Booleanos</h2>
-				Só hai dous, <em>True</em> e <em>False</em>.
+				Só hai dous valores, <em>True</em> e <em>False</em>.
+			</section>
+
+			<section>
+				<h2>Que é <em>falso</em> en Python?</h2>
+				<ul>
+					<li>O valor <em>False</em>
+					</li>
+					<li>A <em>cadea</em> baleira <pre><code>""</code></pre>
+					</li>
+					<li>As <em>listas</em>, <em>tuplas</em> e <em>dicionarios</em> baleiros
+						<pre><code>[]
+()
+{}</code></pre>
+					</li>
+					<li>O valor <em>0</em> tanto enteiro coma flotante.<pre><code>0
+0.0</code></pre>
+					</li>
+					<li>O valor <em>None</em>
+					</li>
+				</ul>
 			</section>
 
 			<section class="demo">
 
 				<aside class="notes">
-				DEMO. 
+				DEMO.
 
 				<pre>
 #Definir unha lista
@@ -318,26 +341,54 @@ tupla[1]
 len(tupla)
 				</pre>
 				</aside>
-				
+
 			</section>
-			
+
 		</section>
 
 		<section>
 			<section>
-			<h2>Estruturas de <em>control</em>.</h2>
+				<h2>Estruturas de <em>control</em>.</h2>
+				<div class="fragment">
+					<ul>
+						<li><code>if &lt;cond>:</code></li>
+						<li><code>while &lt;cond>:</code></li>
+						<li><code>for x in &lt;iterable>:</code></li>
+					</ul>
+				</div>
 			</section>
+
 			<section>
-			<p>Xa estades acostumbrados.</p>
-			<ul>
-				<li><code>if &lt;cond>:</code></li>
-				<li><code>while &lt;cond>:</code></li>
-				<li><code>for x in &lt;iterable>:</code></li>
-			</ul>
-			<p class="fragment" style="margin-top:20px"><code class="bigger">for x in iterable</code>??</p>
+				<h2><em>if </em> &lt;cond><em>:</em></h2>
+				<pre><code>if &lt;cond>:
+	pass
+elif &lt;cond2>:
+	pass
+else:
+	pass</code></pre>
+
 			</section>
+
+			<section>
+				<h2><em>while </em> &lt;cond><em>:</em></h2>
+				<pre><code>while &lt;cond>:
+	pass
+</code></pre>
+
+			</section>
+
+			<section>
+				<h2><em>for</em> x <em>in</em>  &lt;iterable><em>:</em></h2>
+				<pre><code>for x in &lt;iterable>:
+	print x</code></pre>
+
+			<p>Un <em>iterable</em> é calquera das secuencias de antes: <em>cadeas</em>, <em>listas</em>, <em>tuplas</em>, <em>dicionarios </em> e <em>conxuntos</em>.</p>
+
+
+			</section>
+
 		</section>
-		
+
 		<section>
 			<h2>Definición de <em>funcións</em>.</h2>
 			</section>
@@ -440,7 +491,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 		val *= n
 		n = n - 1
 	return val </code></pre>
-	
+
 				<pre class="fragment"><code>def f_explain(n):
 	val = 1
 	while n > 1:
@@ -448,7 +499,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 		n = n - 1
 		yield val
 	yield val </code></pre>
-				
+
 				<p class="fragment"> <strong>NO RETURN.</strong><br />
 				<code class="small">SyntaxError: 'return' with argument inside generator</code>
 				</p>
@@ -542,7 +593,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			<h2><em>Decoradores</em></h2>
 		</section>
 
-	
+
 		<section>
 
 			<section>
