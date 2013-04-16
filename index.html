@@ -611,7 +611,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 
 		<section>
 			<section>
-				<h2><em>Xeneradores</em></h2>
+				<h2><em>Xeradores</em></h2>
 				<p>Cando traballar con listas non é suficiente.</p>
 				<p>Problema: E se quero mostrar a sucesión para calcular o factorial de <code>n</code>?</p>
 				<pre><code># Resultado esperado
@@ -626,7 +626,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			</section>
 
 			<section>
-				<h2><em>Xeneradores</em></h2>
+				<h2><em>Xeradores</em></h2>
 				List comprehension non é boa idea.
 				Definamos unha función.
 				<pre><code>def the_real_f(n):
@@ -639,13 +639,13 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			</section>
 
 			<section>
-				<h2><em>Xeneradores</em></h2>
+				<h2><em>Xeradores</em></h2>
 				<p>Nova palabra clave:
 					<code>
 						<a href="http://docs.python.org/2/reference/simple_stmts.html#the-yield-statement">yield</a>
 					</code>.
 				</p>
-				<p>Como <code>return</code> pero para xeneradores.</p>
+				<p>Como <code>return</code> pero para xeradores.</p>
 				<pre class="fragment shrink hiding" data-fragment-index="2"><code>def f_iterative(n):
 	if n &lt; 0:
 		raise <a href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError">ValueError</a>("f is only defined for positive numbers.")
@@ -678,7 +678,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			</section>
 
 			<section>
-				<h2>Xeneradores</h2>
+				<h2>Xeradores</h2>
 				<h3>Exemplo real</h3>
 				<pre><code style="min-height:23em">class Node(object):
 	def __init__(self, left=None, right=None):
@@ -698,11 +698,11 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 
 		for elt in this.right.get_inorder_list():
 			# Yield all elements after me, inorder
-			yield elt </code></pre>
+			yield elt</code></pre>
 			</section>
 
 			<section>
-				<h2>Xeneradores</h2>
+				<h2>Xeradores</h2>
 				<h3>Utilidade</h3>
 				<ul>
 					<li>Método estándar para iterar (<code class="small">for x in &lt;iterable></code>)</li>
@@ -718,7 +718,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			</section>
 
 			<section>
-				<h2>Xeneradores</h2>
+				<h2>Xeradores</h2>
 				<h3>Eficientes?</h3>
 				<ul>
 					<li>Cada chamada a <code><a href="http://docs.python.org/2/library/stdtypes.html#iterator.next">it.next()</a></code> calcula só un elemento.</li>
@@ -730,7 +730,14 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			</section>
 
 			<section>
-				<h2>Xeneradores</h2>
+				<h2>Xeradores</h2>
+				<p>Estaban na linguaxe: <a href="http://docs.python.org/2/library/stdtypes.html#iterator-types">iteradores</a>!</p>
+				<p>Pero agora podemos definilos para os nosos propios tipos de datos.</p>
+
+			</section>
+
+			<section>
+				<h2>Xeradores</h2>
 				<ul>
 					<li>Pero moito xa está feito!</li>
 					<li>O módulo <a href="http://docs.python.org/2/library/itertools.html">itertools</a>
