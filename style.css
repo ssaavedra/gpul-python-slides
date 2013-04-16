@@ -93,6 +93,10 @@ body {
 	font-size: 1.5em;
 }
 
+.reveal h3 {
+  font-size: 1.2em;
+}
+
 /*********************************************
  * LINKS
  *********************************************/
@@ -260,4 +264,15 @@ body {
 	font-size: 0.75em;
 }
 
+.reveal code.smaller {
+  font-size: 0.9em;
+}
+
+pre {
+    -moz-tab-size:    4;
+    -webkit-tab-size: 4;
+    -o-tab-size:      4;
+    -ms-tab-size:     4;
+    tab-size:         4;
+}
 

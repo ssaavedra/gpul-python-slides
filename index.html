@@ -395,6 +395,8 @@ else:
 
 			<p class="fragment">Un <em>iterable</em> pode ser <small>(entre outros)</small> calquera das secuencias de antes: <em>cadeas</em>, <em>listas</em>, <em>tuplas</em>, <em>dicionarios </em> e <em>conxuntos</em>.</p>
 
+			<p class="fragment">En xeral, un <em>iterable</em> é calquera elemento que sexa un <code><em>iterator</em></code>.</p>
+
 			</section>
 
 			<section>
@@ -680,7 +682,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			<section>
 				<h2>Xeradores</h2>
 				<h3>Exemplo real</h3>
-				<pre><code style="min-height:23em">class Node(object):
+				<pre><code class="smaller" style="min-height:25em;">class Node(object):
 	def __init__(self, left=None, right=None):
 		self.left = left, self.right = right
 		# Anything else...
@@ -763,7 +765,65 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 		</section>
 
 		<section>
-			<h2><em>Decoradores</em></h2>
+			<section>
+				<h2><em>Decoradores</em></h2>
+				<ul class="fragment hiding" data-fragment-index="5">
+					<li class="fragment highlight-red">Patrón decorador</li>
+					<li class="fragment grow">Moito máis potentes.</li>
+					<li class="fragment">Similar ás macros.</li>
+					<li class="fragment"><a href="http://docs.oracle.com/javase/1.5.0/docs/guide/language/annotations.html">Annotations</a> de Java.</li>
+				</ul>
+
+				<ul>
+					<li class="fragment">Memoization</li>
+					<li class="fragment">Hacking the language</li>
+					<li class="fragment">
+				</ul>
+
+				<aside class="notes">
+					
+					<ul>
+						<li>Memoization: <a href="http://wiki.python.org/moin/PythonDecoratorLibrary">http://wiki.python.org/moin/PythonDecoratorLibrary</a></li>
+			
+					</ul>
+				</aside>
+
+			</section>
+
+<!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
+<!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
+
+			<section>
+				<h2><em>Decoradores</em></h2>
+				<h3>Sintaxe</h3>
+				<pre><code><ins>@</ins>decorador
+def funcion():
+	pass</code></pre>
+				<p>Onde <code>decorador</code> é algo <em>callable</em> (unha función).</p>
+			</section>
+
+			<section>
+				<h2><em>Decoradores</em></h2>
+				<h3>WAT?</h3>
+				<pre><code><ins>@</ins>decorador
+def funcion():
+	pass
+#### Código equivalente:
+def funcion():
+	pass
+
+funcion = decorador(funcion)
+</code></pre>
+				<p>Onde <code>decorador</code> é algo <em>callable</em> (unha función).</p>
+
+				<aside class="notes">
+					
+					Hai exemplos en: <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=240808">http://www.artima.com/weblogs/viewpost.jsp?thread=240808</a>
+
+				</aside>
+			</section>
+
+
 		</section>
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
@@ -840,6 +900,12 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			progress: true,
 			history: true,
 			center: true,
+
+			width: 800,
+			height: 600,
+			margin: 0.05,
+			minScale: 0.5,
+			maxScale: 1,
 
 			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 			transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
