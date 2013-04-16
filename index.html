@@ -249,7 +249,7 @@ for a in conx:
 
 
 			<section>
-				<h2><em>Engadir</em>, <em>modificar</em> e <em>borrar</em> elementos</h2>
+				<h2><em>Engadir</em>, <em>modificar</em> e <em>borrar</em> elementos.</h2>
 				<em>Listas</em>
 				<pre><code>
 lista = []
@@ -424,15 +424,69 @@ d[valor]()
 		</section>
 
 		<section>
-			<h2>Definición de <em>funcións</em>.</h2>
+			<section>
+				<h2>Definición de <em>funcións</em>.</h2>
 
-			<pre><code>def nomefuncion (par1, par2):
-	"""
-	Isto é un docstring e sirve para documentar as funcións.
-	"""
-	return par1 + par2
-</code></pre>
+				<pre><code>def funcion_non_parametrica ():
+		"""
+		Isto é un docstring e sirve para documentar as funcións.
+		"""
+		return par1 + par2
 
+	def funcion_unaria (parametro):
+		return parametro</code></pre>
+
+
+			</section>
+
+			<section>
+				<h2>Definición de funcións.</h2>
+				<h3>Argumentos <em>keyword</em>.</h3>
+				<ul>
+					<li>Accesibles por palabra clave.</li>
+					<li>Indícaselles un valor por defecto.</li>
+				</ul>
+
+				<pre><code>def funcion_binaria_default (a=False, b=[]):
+	return (a, b) if a<span class="fragment fade-out"> != False</span> else ([], [])
+
+funcion_binaria_default(True, 5);
+funcion_binaria_default(b=78);</code></pre>
+			
+			</section>
+
+			<section>
+				<h2>Definición de funcións.</h2>
+				<h3>Argumentos adicionais.</h3>
+				<ul>
+					<li>Non previstos nun primeiro instante.</li>
+					<li>Permite non modificar o "contrato" de interface.</li>
+					<li>Similar ao <code>printf(char *fmt, ...)</code> de <strong>C</strong>, pero máis potente.</li>
+				</ul>
+
+				<pre><code>def funcion_naria (param=[], *args):
+	# Aquí args é unha lista de argumentos adicionais
+	return args
+# Exemplo:
+>>> funcion_naria(1, 2, 3, 4, 5, 6, param=8);
+[1, 2, 3, 4, 5, 6]</code></pre>
+
+				<pre><code>def funcion_naria_kw(param=[], *args, **kwargs):
+	# Args é a lista de argumentos adicionais
+	# kwargs é o diccionario de argumentos
+	# de tipo keyword adicionais
+	return (args, kwargs)</code></pre>
+
+			</section>
+
+
+			<section class="demo">
+				<aside class="notes">
+				DEMO.
+
+				</aside>
+
+			</section>
 		</section>
 
 		<section>
@@ -469,12 +523,28 @@ except Exception:
 			</section>
 
 			<section>
+				<h2>Características <em>funcionais</em>.</h2>
 			<ul>
+				<li><code><a href="http://docs.python.org/2/tutorial/controlflow.html#lambda-forms">lambdas</a> <a href="http://stackoverflow.com/a/890188/488191">[2]</a></code></li>
 				<li class="fragment"><code>List comprehensions</code></li>
 				<li class="fragment"><code><a href="http://docs.python.org/2/library/functions.html#map">map</a>(lambda x: f(x), iterable)</code></li>
 				<li class="fragment"><code><a href="http://docs.python.org/2/library/functions.html#filter">filter</a>(lambda x: x > 5, iterable)</code></li>
 				<li class="fragment"><code><a href="http://docs.python.org/2/library/functions.html#reduce">reduce</a>(lambda x,y: f(x,y), iterable)</code></li>
 			</ul>
+			</section>
+
+			<section>
+				<h2>Características <em>funcionais</em>.</h2>
+				<h3><code>lambda x: transform(x)</code></h3>
+
+				<pre><code>def sumar_cinco (n):
+	return n + 5
+
+<span class="fragment"><del>def</del> sumar_cinco <del>(</del>n<del>)</del>:
+	<del>return</del> n + 5</span>
+
+<span class="fragment">sumar_cinco = <ins>lambda</ins> n: n + 5</span></code></pre>
+
 			</section>
 
 			<section>
@@ -520,7 +590,7 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			<section>
 				<h2><em>Xeneradores</em></h2>
 				<p>Cando traballar con listas non é suficiente.</p>
-				<p>Problema: E se quero mostrar a sucesión para calcular o factorial de n?</p>
+				<p>Problema: E se quero mostrar a sucesión para calcular o factorial de <code>n</code>?</p>
 				<pre><code># Resultado esperado
 >>> f_explain(5)
 5 # * f_explain(4)
@@ -530,22 +600,30 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 120 # * f_explain(0)
 120
 >>> </code></pre>
+			</section>
+
+			<section>
+				<h2><em>Xeneradores</em></h2>
 				List comprehension non é boa idea.
 				Definamos unha función.
 				<pre><code>def the_real_f(n):
 	if n == 0:
 		return 1
 	elif n &lt; 0:
-		raise <a href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError">ValueError</a>("f is only defined for positive numbers.")
+		raise <a href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError">ValueError</a>("f is only defined for n >= 0.")
 	else:
 		return n * f_explain(n - 1) </code></pre>
 			</section>
 
 			<section>
 				<h2><em>Xeneradores</em></h2>
-				<p>Nova palabra clave: <code><a href="http://docs.python.org/2/reference/simple_stmts.html#the-yield-statement">yield</a></code>.</p>
+				<p>Nova palabra clave:
+					<code>
+						<a href="http://docs.python.org/2/reference/simple_stmts.html#the-yield-statement">yield</a>
+					</code>.
+				</p>
 				<p>Como <code>return</code> pero para xeneradores.</p>
-				<pre><code>def f_iterative(n):
+				<pre class="fragment shrink hiding" data-fragment-index="2"><code>def f_iterative(n):
 	if n &lt; 0:
 		raise <a href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError">ValueError</a>("f is only defined for positive numbers.")
 	val = 1
@@ -707,6 +785,18 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 	<script src="reveal.js/js/reveal.min.js"></script>
 
 	<script>
+
+		window.addEventListener('load', function() {
+		var s = document.getElementsByClassName('demo');
+		console.log(s)
+		s = Array.prototype.slice.call(s, 0);
+		s.forEach(function(obj) {
+			var e = document.createElement('div');
+			e.className = "fragment demo-fragment"
+			e.innerHTML = "DEMO"
+			console.log(obj)
+			obj.appendChild(e)
+		})}, false);
 
 		// Full list of configuration options available here:
 		// https://github.com/hakimel/reveal.js#configuration

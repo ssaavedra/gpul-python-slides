@@ -208,15 +208,41 @@ body {
 }
 
 .reveal section.demo:before {
-	content: 'DEMO';
+	content: '';
 	color: #F84E48;
 	font-family: Helvetica, sans-serif;
 	font-weight: bolder;
 	font-size: 4em;
 }
 
-.reveal section.demo.past:before {
+.reveal section.demo.past:before,
+.reveal section.past > section.demo:before {
 	color: #4EF848;
+}
+
+.reveal section.demo .fragment.demo-fragment {
+  color: #F84E48;
+  font-family: Helvetica, sans-serif;
+  font-weight: bolder;
+  font-size: 4em; 
+  opacity: 1;
+}
+
+
+.reveal .slides section .fragment.hiding {
+  opacity: 1;
+}
+
+.reveal .slides section .fragment.visible.hiding {
+  opacity: 0;
+  height: 0px;
+  -webkit-transition: 0; /* improvements? */
+}
+
+
+.reveal section.demo .fragment.demo-fragment.visible {
+  -webkit-transition: all 800ms ease-out;
+  color: #4EF848;
 }
 
 #tipos_de_datos {
