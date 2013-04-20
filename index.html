@@ -103,6 +103,8 @@ print 'Ola mundo!'
 					</ul>
 				</div>
 
+			<!-- mutables vs inmutables -->
+
 			</section>
 
 			<section id="dt_int">
@@ -453,6 +455,41 @@ funcion_binaria_default(b=78);</code></pre>
 
 			</section>
 
+			<section>
+				<h2>Definición de funcións.</h2>
+				<h3>Argumentos... sen tipo?</h3>
+				<ul class="fragment shrink">
+					<li>Como sei qué vou a recibir?</li>
+					<li>Que mais da!</li>
+				</ul>
+				<ul>
+					<li class="fragment">Se se parece a un pato</li>
+					<li class="fragment">... e soa como un pato</li>
+					<li class="fragment">ten que ser un pato</li>
+				</ul>
+
+			</section>
+			<section>
+				<h2><em>Duck Typing</em></h2>
+
+				<img class="fragment" src="./wat-duck.jpg" data-fragment-index="3"/>
+
+				<pre class="fragment"><code>def funcion(editor, texto):
+	try:
+		editor.print(texto)
+	except (AttributeError, TypeError):
+		print "Este editor non sabe imprimir"
+		# Non é un pato</code></pre>
+			</section>
+
+
+			<section class="demo">
+				<aside class="notes">
+				DEMO.
+
+				</aside>
+
+			</section>
 		</section>
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
@@ -550,14 +587,116 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 			</section>
 		</section>
 
-
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
 
 		<section>
 			<h2><em>Orientación</em> a <em>obxectos</em>.</h2>
+
 		</section>
 
+<!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
+<!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
+
+		<section>
+				<section>
+				<h2>Magic Methods</h2>
+
+				<ul>
+					<li>Problema: Azucre sintáctico en listas...</li>
+					<li>E as miñas implementacións?</li>
+				</ul>
+
+				<pre class="fragment"><code>class NTree(object):
+		def __init__(self, nodelist):
+			# ...
+			pass
+
+	tree = NTree()
+	tree[4] # ???</code></pre>
+
+				<aside class="notes">
+				<ul>
+					<li>Problema: Non podemos ter o azucre sintáctico dos tipos básicos da linguaxe.</li>
+					<li>Solución: Extender a linguaxe para permitir que calquera clase poida ofrecer métodos para traballar con ela mediante o azucre existente na linguaxe.</li>
+
+				</aside>
+			</section>
+
+			<section>
+				<h2>Magic Methods</h2>
+				<ul>
+					<li>API para o azucre sintáctico</li>
+					<li>Pero non só!</li>
+					<li>iteradores</li>
+					<li>inicialización</li>
+					<li>comparacións</li>
+					<li>sumas</li>
+				</ul>
+
+				<pre><code>class Conxunto(object):
+	def __init__(self, iterable):
+		self.elementos = list(<abbr title="Non é parte da biblioteca estándar">uniques<sup style="font-size: 0.7em">(1)</abbr></sup>(iterable))
+
+x = Conxunto([1, 2, 3])
+y = Conxunto([4, 5, 6])
+z = x + y # [1, 2, 3, 4, 5, 6]</code></pre>
+			</section>
+
+			<section>
+				<h2>Magic Methods</h2>
+				<pre><code>class Conxunto(object):
+	def __init__(self, iterable):
+		self.elementos = list(<abbr title="Non é parte da biblioteca estándar">uniques<sup style="font-size: 0.7em">(1)</abbr></sup>(iterable))
+	def __sum__(self, other):
+		return self.elementos + other.elementos
+
+x = Conxunto([1, 2, 3])
+y = Conxunto([4, 5, 6])
+z = x + y # [1, 2, 3, 4, 5, 6]</code></pre>
+			</section>
+
+			<section>
+				<h2>Cláusula <em>with</em></h2>
+				<pre><code>with open('filename.pkl', 'r') as f:
+	lines = f.readlines()
+try:
+	f.readlines()
+except ValueError:
+	pass # I/O operation on closed file
+</code></pre>
+
+				<div class="fragment">Funciona internamente gracias a:
+				<ul>
+					<li>x.<code>__enter__()</code></li>
+					<li>x.<code>__exit__()</code></li>
+				</ul></div>
+			</section>
+
+			<section>
+				<h2>Cláusula <em>with</em></h2>
+				<h3>Funcionamento interno</h3>
+				<pre><code>with open('filename.pkl', 'r') as f:
+	lines = f.readlines()
+try:
+	f.readlines()
+except ValueError:
+	pass # I/O operation on closed file</code></pre>
+
+				<pre><code>_ctx = open('filename.pkl', 'r')
+_ctx_ex = contexto.__exit__ # Gárdase o manexador...
+f = _ctx.__enter__()
+try:
+	lines = f.readlines()
+finally:
+	f = _ctx_ex()
+try:
+	f.readlines()
+except ValueError:
+	pass # I/O operation on closed file</code></pre>
+
+</section>
+		</section>
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
@@ -811,7 +950,8 @@ if __name__ == '__main__':
 					</li>
 				</ul>
 			</section>
-
+			<!-- asserts -->
+			<!-- falar dos assert normais -->
 		</section>
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
