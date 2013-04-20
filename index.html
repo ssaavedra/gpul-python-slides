@@ -59,30 +59,14 @@
 
 				</aside>
 			</section>
-			<section><h2>Interpretada</h2>
-			<p>A implementación de referencia, <kbd>CPython</kbd> é un <em>intérprete</em> da linguaxe.
-			Aínda así, é <em>rápido</em>, pois permite incluir extensións nativas.</p>
+
+			<section>
+				<p>Centrase na <em>axilidade</em> á hora de programar e na <em>lexibilidade</em> do código.</p>
 			</section>
 
-			<section><h2>Multiparadigma</h2>
-			<ul>
-				<li>Procedimental</li>
-				<li>Funcional</li>
-				<li>Orientado a obxectos</li>
-				<li>Modular...</li>
-			</ul>
+			<section>
+				<blockquote>Python comes with <em>batteries included</em>.</blockquote>
 			</section>
-		</section>
-
-<!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
-<!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
-
-		<section>
-		<p>Centrase na <em>axilidade</em> á hora de programar e na <em>lexibilidade</em> do código.</p>
-		</section>
-
-		<section>
-		<blockquote>Python comes with <em>batteries included</em>.</blockquote>
 		</section>
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
@@ -466,7 +450,7 @@ d[valor]()
 
 funcion_binaria_default(True, 5);
 funcion_binaria_default(b=78);</code></pre>
-			
+
 			</section>
 
 			<section>
@@ -493,14 +477,6 @@ funcion_binaria_default(b=78);</code></pre>
 
 			</section>
 
-
-			<section class="demo">
-				<aside class="notes">
-				DEMO.
-
-				</aside>
-
-			</section>
 		</section>
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
@@ -761,8 +737,104 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
 
 		<section>
-			<h2><em>Testing</em></h2>
+			<section>
+				<h2><em>Testing</em></h2>
+			</section>
+
+			<section>
+				<h2>Módulo <em>doctest</em></h2>
+				<ul>
+					<li>Forma rápida de facer <em>test sinxelos</em>.</li>
+					<li>Tests <em>pouco exhaustivos</em>.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Módulo <em>doctest</em></h2>
+				<pre><code>def square(n):
+	"""
+	>>> square(4)
+	2
+
+	>>> square(-1)
+	Traceback (most recent call last):
+		...
+	ValueError: n ten que ser >= 0
+	"""
+	from math import sqrt
+	if not n >= 0:
+        raise ValueError("n ten que ser >= 0")
+    return sqrt(n)</code></pre>
+			</section>
+
+			<section>
+				<h2>Módulo <em>doctest</em></h2>
+				<pre>$ python testing_prueba.py -v
+Trying:
+    square(4)
+Expecting:
+    2.0
+ok
+Trying:
+    square(-1)
+Expecting:
+    Traceback (most recent call last):
+            ...
+    ValueError: n ten que ser >= 0
+ok
+1 items had no tests:
+    __main__
+1 items passed all tests:
+   2 tests in __main__.square
+2 tests in 2 items.
+2 passed and 0 failed.
+Test passed.</pre>
+			</section>
+
+			<section>
+				<h2>Módulo <em>unittest</em></h2>
+				<ul>
+					<li>Similares aos test de JUnit.</li>
+					<li>Posibilidade de ver a <em>cobertura</em> do test.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Módulo <em>unittest</em></h2>
+				<pre><code>import random
+import unittest
+
+class TestSequenceFunctions(unittest.TestCase):
+
+  def setUp(self):
+    self.seq = range(10)
+
+  def test_shuffle(self):
+    random.shuffle(self.seq)
+    self.seq.sort()
+    self.assertEqual(self.seq, range(10))
+
+    self.assertRaises(TypeError, random.shuffle, (1,2,3))</code></pre>
+			</section>
+			<section>
+				<h2>Módulo <em>unittest</em></h2>
+				<ul>
+					<li>Os metodos <em>setUp</em> e <em>tearDown</em> executanse antes e despois de cada método.</li>
+					<li>A clase TestCase provee asercións especiais para diferentes cousas:
+						<ul>
+							<li><em>assertTrue</em> e <em>assertFalse</em></li>
+							<li><em>assertEqual</em> e <em>assertNotEqual</em></li>
+							<li><em>assertIn</em> e <em>assertNotIn</em></li>
+							<li><em>assertIsNone</em> e <em>assertNotIsNone</em></li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
 		</section>
+
+<!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
+<!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
 
 		<section>
 			<section>
@@ -781,10 +853,10 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 				</ul>
 
 				<aside class="notes">
-					
+
 					<ul>
 						<li>Memoization: <a href="http://wiki.python.org/moin/PythonDecoratorLibrary">http://wiki.python.org/moin/PythonDecoratorLibrary</a></li>
-			
+
 					</ul>
 				</aside>
 
@@ -817,7 +889,7 @@ funcion = decorador(funcion)
 				<p>Onde <code>decorador</code> é algo <em>callable</em> (unha función).</p>
 
 				<aside class="notes">
-					
+
 					Hai exemplos en: <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=240808">http://www.artima.com/weblogs/viewpost.jsp?thread=240808</a>
 
 				</aside>
