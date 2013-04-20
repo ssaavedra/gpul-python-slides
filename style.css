@@ -276,3 +276,8 @@ pre {
     tab-size:         4;
 }
 
+.reveal pre code {
+  max-height: 500px;
+  overflow: visible;
+}
+

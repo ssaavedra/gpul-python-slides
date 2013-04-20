@@ -114,13 +114,11 @@ print 'Ola mundo!'
 					<li>Números en <em>punto flotante</em>: <code>float</code></li>
 					<li>Números <em>complexos</em>! <code>complex</code></li>
 				</ul>
-				<pre class="fragment"><code>
-numero_enteiro = 500
-numero_longo = 23988123791824723948712491287412948127942184
+				<pre class="fragment"><code>numero_enteiro = 500
+numero_longo = 23988123791824723948712491287412948127
 numero_longo2 = 5L
 numero_float = 3.1415926
-numero_complex = (1+1j)
-				</code></pre>
+numero_complex = (1+1j)</code></pre>
 
 			</section>
 			<section>
@@ -133,8 +131,7 @@ numero_complex = (1+1j)
 					<li>unicode</li>
 				</ul>
 
-				<pre class="fragment"><code>
-string1 = 'Ola mundo'
+				<pre class="fragment"><code>string1 = 'Ola mundo'
 string2 = "Ola mundo"
 string3 = "Ola 'señor'"
 string4 = """
@@ -143,8 +140,7 @@ que ocupa dúas liñas.
 """
 
 ustring1 = u'Ola mundo'
-# O resto podedes imaxinalos...
-				</code></pre>
+# O resto podedes imaxinalos...</code></pre>
 
 
 			</section>
@@ -176,35 +172,26 @@ ustring1 = u'Ola mundo'
 				<dl>
 
 					<dt><em>Listas</em></dt>
-					<dd><pre><code>
-lista = [1,2,3,45]
-					</code></pre></dd>
+					<dd><pre><code>lista = [1,2,3,45]</code></pre></dd>
 					<dt><em>Tuplas</em></dt>
-					<dd><pre><code>
-tupla = (3,2,3)
-tupla2 = (2,)
-					</code></pre></dd>
+					<dd><pre><code>tupla = (3,2,3)
+tupla2 = (2,)</code></pre></dd>
 				</dl>
 			</section>
 			<section>
 				<h2>Definición</h2>
 					<em>Dicionarios</em>
-					<pre><code>
-dicionario = {"clave1":32, "clave2":3, 42:4}
-					</code></pre>
+					<pre><code>dicionario = {"clave1":32, "clave2":3, 42:4}</code></pre>
 					<em>Conxuntos</em>
-					<pre><code>
-#A partir doutras secuencias
+					<pre><code>#A partir doutras secuencias
 conxunto = set([1,2,4,4])
-conxunto2 = set("batman")
-					</code></pre>
+conxunto2 = set("batman")</code></pre>
 
 			</section>
 			<section>
 				<h2>Acceder aos elementos</h2>
 					<em>Listas, Tuplas (e Strings!!)</em>
-					<pre><code>
-lista = [1,2,3,4,5,6,7]
+					<pre><code>lista = [1,2,3,4,5,6,7]
 #Acceder a un elemento
 lista[2]
 lista[-1]
@@ -212,31 +199,26 @@ lista[-1]
 #Acceder a unha sub-secuencia
 lista[3:4]
 lista[1:]
-lista[0:6:2]
-					</code></pre>
+lista[0:6:2]</code></pre>
 
 				<em>Dicionarios</em>
-					<pre><code>
-dicionario = {"clave1":32, "clave2":3}
+					<pre><code>dicionario = {"clave1":32, "clave2":3}
 
 #Accedese a través da clave.
-dicionario["clave1"]
-					</code></pre>
+dicionario["clave1"]</code></pre>
 			</section>
 
 			<section>
 			<h2>Acceder aos elementos</h2>
 			<em>E os conxuntos?</em>
-			<pre><code>
-conx = set([1,2,3,4,1,5])
+			<pre><code>conx = set([1,2,3,4,1,5])
 
 #Podemos saber se un elemento esta no conxunto
 5 in conx
 
 #Podemos recorrer os elementos usando un for
 for a in conx:
-	print a
-			</code></pre>
+	print a</code></pre>
 
 			</section>
 
@@ -244,20 +226,16 @@ for a in conx:
 			<section>
 				<h2><em>Engadir</em>, <em>modificar</em> e <em>borrar</em> elementos.</h2>
 				<em>Listas</em>
-				<pre><code>
-lista = []
+				<pre><code>lista = []
 lista.append(12)
 lista[0] = 21
-lista.remove(21)
-				</code></pre>
+lista.remove(21)</code></pre>
 
 				<em>Dicionarios</em>
-				<pre><code>
-dicionario = {}
+				<pre><code>dicionario = {}
 dicionario["clave"] = 12
 dicionario["clave"] = 21
-dicionario.pop("clave") #Devolve o valore e elimina a entrada.
-				</code></pre>
+dicionario.pop("clave") #Devolve o valor e elimina a entrada.</code></pre>
 
 
 			</section>
@@ -426,13 +404,14 @@ d[valor]()
 				<h2>Definición de <em>funcións</em>.</h2>
 
 				<pre><code>def funcion_non_parametrica ():
-		"""
-		Isto é un docstring e sirve para documentar as funcións.
-		"""
-		return par1 + par2
+	"""
+	Isto é un docstring e sirve para documentar
+	as funcións.
+	"""
+	return par1 + par2
 
-	def funcion_unaria (parametro):
-		return parametro</code></pre>
+def funcion_unaria (parametro):
+	return parametro</code></pre>
 
 
 			</section>
