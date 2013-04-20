@@ -462,18 +462,15 @@ funcion_binaria_default(b=78);</code></pre>
 					<li>Similar ao <code>printf(char *fmt, ...)</code> de <strong>C</strong>, pero máis potente.</li>
 				</ul>
 
-				<pre><code>def funcion_naria (param=[], *args):
-	# Aquí args é unha lista de argumentos adicionais
-	return args
-# Exemplo:
->>> funcion_naria(1, 2, 3, 4, 5, 6, param=8);
-[1, 2, 3, 4, 5, 6]</code></pre>
-
-				<pre><code>def funcion_naria_kw(param=[], *args, **kwargs):
-	# Args é a lista de argumentos adicionais
-	# kwargs é o diccionario de argumentos
-	# de tipo keyword adicionais
-	return (args, kwargs)</code></pre>
+				<pre><code>def funcion(par1, par2=2, *args, **kwargs):
+	print "Valor de par1: ", par1
+	print "Valor de par2: ", par2
+	print "Lista de argumentos:"
+	for x in args:
+		print x
+	print "Lista de argumentos keyword:"
+	for x in kwargs:
+		print x, " -> ", kwargs[x]</code></pre>
 
 			</section>
 
@@ -503,7 +500,6 @@ except Exception:
 			<section class="demo">
 				<aside class="notes">
 				DEMO.
-
 				</aside>
 
 			</section>
@@ -764,7 +760,11 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 	from math import sqrt
 	if not n >= 0:
         raise ValueError("n ten que ser >= 0")
-    return sqrt(n)</code></pre>
+    return sqrt(n)
+
+if __name__ == '__main__':
+	import doctest
+	doctest.testmod()</code></pre>
 			</section>
 
 			<section>
@@ -814,7 +814,9 @@ class TestSequenceFunctions(unittest.TestCase):
     self.seq.sort()
     self.assertEqual(self.seq, range(10))
 
-    self.assertRaises(TypeError, random.shuffle, (1,2,3))</code></pre>
+    self.assertRaises(TypeError, random.shuffle, (1,2,3))
+if __name__ == '__main__':
+    unittest.main()</code></pre>
 			</section>
 			<section>
 				<h2>Módulo <em>unittest</em></h2>
