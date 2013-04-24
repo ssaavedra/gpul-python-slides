@@ -792,29 +792,37 @@ except ValueError:
 			<section>
 				<h2><em>Xeradores</em></h2>
 				<p>Cando traballar con listas non é suficiente.</p>
-				<p>Problema: E se quero mostrar a sucesión para calcular o factorial de <code>n</code>?</p>
+				<p>Problema: E se quero mostrar a sucesión de fibonacci ata un número <code>n</code>?</p>
 				<pre><code># Resultado esperado
->>> f_explain(5)
-5 # * f_explain(4)
-20 # * f_explain(3)
-60 # * f_explain(2)
-120 # * f_explain(1)
-120 # * f_explain(0)
-120
->>> </code></pre>
+>>> x = fib_seq(5)
+>>> x.next()
+1
+>>> x.next()
+1
+>>> x.next()
+2
+>>> x.next()
+3
+>>> x.next()
+5
+>>> x.next()
+Traceback (most recent call last):
+  File "&lt;stdin>", line 1, in &lt;module>
+StopIteration</code></pre>
 			</section>
 
 			<section>
 				<h2><em>Xeradores</em></h2>
 				List comprehension non é boa idea.
-				Definamos unha función.
-				<pre><code>def the_real_f(n):
-	if n == 0:
-		return 1
-	elif n &lt; 0:
-		raise <a href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError">ValueError</a>("f is only defined for n >= 0.")
-	else:
-		return n * f_explain(n - 1) </code></pre>
+				Como é a función que calcula o <em>número</em> de fibonacci?
+				<pre><code>def fib(n):
+	current, last = 1, 0
+	for i in range(n - 1):
+		current, last = current + last, current
+
+	return current
+
+fib_seq = lambda n: [fib(a) for a in range(n + 1)]</code></pre>
 			</section>
 
 			<section>
@@ -825,22 +833,21 @@ except ValueError:
 					</code>.
 				</p>
 				<p>Como <code>return</code> pero para xeradores.</p>
-				<pre class="fragment shrink hiding" data-fragment-index="2"><code>def f_iterative(n):
-	if n &lt; 0:
-		raise <a href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError">ValueError</a>("f is only defined for positive numbers.")
-	val = 1
-	while n > 1:
-		val *= n
-		n = n - 1
-	return val </code></pre>
+				<pre class="fragment shrink hiding" data-fragment-index="2"><code>def fib(n):
+	current, last = 1, 0
+	for i in range(n - 1):
 
-				<pre class="fragment"><code>def f_explain(n):
-	val = 1
-	while n > 1:
-		val *= n
-		n = n - 1
-		yield val
-	yield val </code></pre>
+		current, last = current + last, current
+
+	return current</code></pre>
+
+				<pre class="fragment"><code>def fib(n):
+	current, last = 1, 0
+	for i in range(n - 1):
+		<ins>yield</ins> current
+		current, last = current + last, current
+
+	<ins>yield</ins> current</code></pre>
 
 				<p class="fragment"> <strong>NO RETURN.</strong><br />
 				<code class="small">SyntaxError: 'return' with argument inside generator</code>
@@ -1057,7 +1064,6 @@ if __name__ == '__main__':
 				<ul>
 					<li class="fragment">Memoization</li>
 					<li class="fragment">Hacking the language</li>
-					<li class="fragment">
 				</ul>
 
 				<aside class="notes">
@@ -1108,7 +1114,7 @@ funcion = decorador(funcion)
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
-
+<!--
 		<section>
 
 			<section>
@@ -1138,9 +1144,16 @@ funcion = decorador(funcion)
 			</ul>
 			</section>
 		</section>
-
+-->
 		<section>
 			<h2>Python <em>3</em></h2>
+		</section>
+
+		<section>
+			<h2><em>Ruegos</em> e <em>Preguntas</em></h2>
+			<div class="fragment roll-in">
+				<h2>Grazas por vir</h2>
+			</div>
 		</section>
 
 	</div>
