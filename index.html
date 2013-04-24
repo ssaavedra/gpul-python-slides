@@ -371,7 +371,7 @@ No índice  0  gárdase o valor  23
 No índice  1  gárdase o valor  43
 </code></pre>
 			</section>
-
+<!--
 			<section>
 				<h2>E onde está o <em>"switch"</em>?</h2>
 				<p>Non hai!<p>
@@ -398,7 +398,7 @@ d[valor]()
 
 				</ul>
 			</section>
-
+-->
 		</section>
 
 		<section>
@@ -410,7 +410,7 @@ d[valor]()
 	Isto é un docstring e sirve para documentar
 	as funcións.
 	"""
-	return par1 + par2
+	return 42
 
 def funcion_unaria (parametro):
 	return parametro</code></pre>
@@ -591,7 +591,91 @@ newlist = [ 2 * x for x in alist if x > 5 ]
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
 
 		<section>
-			<h2><em>Orientación</em> a <em>obxectos</em>.</h2>
+			<section>
+				<h2><em>Orientación</em> a <em>obxectos</em>.</h2>
+
+				<ul>
+
+					<li class="fragment">Clases</li>
+					<li class="fragment">Variables de clase</li>
+					<li class="fragment">Variables de instancia</li>
+					<li class="fragment">Herencia (múltiple)</li>
+					<li class="fragment">Membros/propiedades</li>
+					<li class="fragment">Sobrecarga de funcións</li>
+					<li class="fragment">Polimorfismo</li>
+					<li class="fragment">Metaclases</li>
+					<li class="fragment">En Python <em>todo</em> é un obxecto</li>
+					<li class="fragment">"Non" hai visibilidades</li>
+					<li class="fragment">... nin interfaces</li>
+					<li class="fragment">... nin clases abstractas</li>
+
+
+				</ul>
+
+				<aside class="notes">
+					Ata as clases son obxectos, que se crean mediante as Metaclases.
+					Unha metaclase non é nada doutro mundo.
+					Hai un link moi bo en <a href="http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python">StackOverflow</a>
+				</aside>
+
+			</section>
+
+			<section>
+				<h2>Orientación a <em>obxectos</em>.</h2>
+				<h3>Convencións</h3>
+
+				<ul>
+					<li>Nomes de clase en maiúscula</li>
+					<li>Nomes de obxectos en minúscula</li>
+					<li>Nomes de funcións como habitualmente</li>
+					<li>Métodos "especiais" <code class="clr">__init__</code></li>
+					<li>Aos métodos de instancia pásaselles explícitamente <code class="clr">self</code></li>
+				</ul>
+
+
+			</section>
+
+			<section>
+				<h2>Orientación a <em>obxectos</em>.</h2>
+				<h3>Exemplo</h3>
+				<pre><code>class Exemplo(object):
+	# Constructor
+	def __init__(self, *args, **kwargs):
+		self.value = 0
+
+	# Sumar tres
+	def sumar_tres(self):
+		self.value += 3</code></pre>
+
+				<pre><code>o = Exemplo()
+o.value # 0
+
+o.sumar_tres()
+o.value # 3</code></pre>
+			</section>
+
+
+			<section>
+				<h2>Orientación a <em>obxectos</em>.</h2>
+				<h3>Chamar a un método de superclase</h3>
+				<pre><code>class A(object):
+	# Constructor
+	def __init__(self, *args, **kwargs):
+		self.value = 0
+
+	# Sumar tres
+	def operador(self, other):
+		self.value += other
+
+class B(A):
+	def operador(self, other):
+		self.value -= 6
+		return A.operador(<var class="fragment highlight-bold">self</var>, other)</code></pre>
+
+				<p>Pásase explícitamente <code>self</code>.</p>
+
+			</section>
+
 
 		</section>
 
@@ -660,6 +744,9 @@ z = x + y # [1, 2, 3, 4, 5, 6]</code></pre>
 				<h2>Cláusula <em>with</em></h2>
 				<pre><code>with open('filename.pkl', 'r') as f:
 	lines = f.readlines()
+
+# Agora xa está pechado o ficheiro
+
 try:
 	f.readlines()
 except ValueError:
@@ -684,7 +771,7 @@ except ValueError:
 	pass # I/O operation on closed file</code></pre>
 
 				<pre><code>_ctx = open('filename.pkl', 'r')
-_ctx_ex = contexto.__exit__ # Gárdase o manexador...
+_ctx_ex = _ctx.__exit__ # Gárdase o manexador...
 f = _ctx.__enter__()
 try:
 	lines = f.readlines()

@@ -228,7 +228,7 @@ body {
   color: #F84E48;
   font-family: Helvetica, sans-serif;
   font-weight: bolder;
-  font-size: 4em; 
+  font-size: 4em;
   opacity: 1;
 }
 
@@ -236,12 +236,18 @@ body {
 .reveal .slides section .fragment.hiding {
   opacity: 1;
 }
+  .reveal .slides section .fragment.visible.hiding {
+    opacity: 0;
+    height: 0px;
+    -webkit-transition: 0; /* improvements? */
+  }
 
-.reveal .slides section .fragment.visible.hiding {
-  opacity: 0;
-  height: 0px;
-  -webkit-transition: 0; /* improvements? */
+.reveal .slides section .fragment.highlight-bold {
+  opacity: 1;
 }
+  .reveal .slides section .fragment.highlight-bold.visible {
+    font-weight: bolder;
+  }
 
 
 .reveal section.demo .fragment.demo-fragment.visible {
@@ -258,6 +264,10 @@ body {
   -moz-column-gap:10em; /* Firefox */
   -webkit-column-gap:10em; /* Safari and Chrome */
   column-gap:10em;
+}
+
+.reveal code.clr {
+  font-family: Inconsolata, monospace;
 }
 
 .reveal code.small {
