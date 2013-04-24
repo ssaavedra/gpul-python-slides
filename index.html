@@ -27,9 +27,6 @@
 	<script src="lib/js/html5shiv.js"></script>
 	<![endif]-->
 </head>
-
-
-</head>
 <body>
 	<div class="reveal">
 		<div class="slides">
@@ -62,7 +59,7 @@
 
 			<section>
 				<h2>Creado no ano <em>1990</em> por <em>Guido van Rossum</em> </h2>
-				<img src="./img/guido.jpg">
+				<img src="./img/guido.jpg" alt="Guido van Rossum"/>
 			</section>
 
 			<section>
@@ -477,7 +474,7 @@ funcion_binaria_default(b=78);</code></pre>
 			<section>
 				<h2><em>Duck Typing</em></h2>
 
-				<img class="fragment" src="./img/wat-duck.jpg" data-fragment-index="3"/>
+				<img class="fragment" alt="Pato WAT" src="./img/wat-duck.jpg" data-fragment-index="3"/>
 
 				<pre class="fragment"><code>def funcion(editor, texto):
 	try:
@@ -705,10 +702,10 @@ class B(A):
 	tree[4] # ???</code></pre>
 
 				<aside class="notes">
-				<ul>
-					<li>Problema: Non podemos ter o azucre sintáctico dos tipos básicos da linguaxe.</li>
-					<li>Solución: Extender a linguaxe para permitir que calquera clase poida ofrecer métodos para traballar con ela mediante o azucre existente na linguaxe.</li>
-
+					<ul>
+						<li>Problema: Non podemos ter o azucre sintáctico dos tipos básicos da linguaxe.</li>
+						<li>Solución: Extender a linguaxe para permitir que calquera clase poida ofrecer métodos para traballar con ela mediante o azucre existente na linguaxe.</li>
+					</ul>
 				</aside>
 			</section>
 
@@ -725,7 +722,7 @@ class B(A):
 
 				<pre><code>class Conxunto(object):
 	def __init__(self, iterable):
-		self.elementos = list(<abbr title="Non é parte da biblioteca estándar">uniques<sup style="font-size: 0.7em">(1)</abbr></sup>(iterable))
+		self.elementos = list(<abbr title="Non é parte da biblioteca estándar">uniques<sup style="font-size: 0.7em">(1)</sup></abbr>(iterable))
 
 x = Conxunto([1, 2, 3])
 y = Conxunto([4, 5, 6])
@@ -736,7 +733,7 @@ z = x + y # [1, 2, 3, 4, 5, 6]</code></pre>
 				<h2>Magic Methods</h2>
 				<pre><code>class Conxunto(object):
 	def __init__(self, iterable):
-		self.elementos = list(<abbr title="Non é parte da biblioteca estándar">uniques<sup style="font-size: 0.7em">(1)</abbr></sup>(iterable))
+		self.elementos = list(<abbr title="Non é parte da biblioteca estándar">uniques<sup style="font-size: 0.7em">(1)</sup></abbr>(iterable))
 	def __sum__(self, other):
 		return self.elementos + other.elementos
 
@@ -872,24 +869,23 @@ fib_seq = lambda n: [fib(a) for a in range(n + 1)]</code></pre>
 				<h2>Xeradores</h2>
 				<h3>Exemplo real</h3>
 				<pre><code class="smaller" style="min-height:25em;">class Node(object):
-	def __init__(self, left=None, right=None):
-		self.left = left, self.right = right
-		# Anything else...
+    def __init__(self, value="U", left=None, right=None):
+        # Assign self.left, self.right ...
 
-	def get_inorder_list(self):
-		'''
-		Returns a list of the order in
-		in-order position
-		'''
-		for elt in this.left.get_inorder_list():
-			# Yield all elements before me, inorder
-			yield elt
+    def get_inorder_list(self):
+        if self.left:
+            for elt in self.left.get_inorder_list():
+                # Yield all elements before me, inorder
+                yield elt
 
-		yield self # Yield ourselves
+        yield self # Yield ourselves
 
-		for elt in this.right.get_inorder_list():
-			# Yield all elements after me, inorder
-			yield elt</code></pre>
+        if self.right:
+            for elt in self.right.get_inorder_list():
+                # Yield all elements after me, inorder
+                yield elt
+
+</code></pre>
 			</section>
 
 			<section>
@@ -944,10 +940,57 @@ fib_seq = lambda n: [fib(a) for a in range(n + 1)]</code></pre>
 					</li>
 				</ul>
 			</section>
+
+			<section class="demo">
+				<aside class="notes">
+<pre><code>
+def fib(n):
+    current, last = 1, 0
+    for i in range(n - 1):
+        yield current
+        current, last = current + last, current
+
+    yield current
+</code></pre>
+<hr />
+<pre><code>
+class Node(object):
+    def __init__(self, value="U", left=None, right=None):
+        self.left = left
+        self.right = right
+        self.value = value
+        # Anything else...
+
+    def get_inorder_list(self):
+        '''
+        Returns a list of the order in
+        in-order position
+        '''
+        if self.left:
+            for elt in self.left.get_inorder_list():
+                # Yield all elements before me, inorder
+                yield elt
+
+        yield self # Yield ourselves
+
+        if self.right:
+            for elt in self.right.get_inorder_list():
+                # Yield all elements after me, inorder
+                yield elt
+
+    def __str__(self):
+        return self.value
+
+</code></pre>
+
+				</aside>
+			</section>
 		</section>
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
+
+<!--
 
 		<section>
 			<section>
@@ -1049,9 +1092,9 @@ if __name__ == '__main__':
 					</li>
 				</ul>
 			</section>
-			<!-- asserts -->
-			<!-- falar dos assert normais -->
 		</section>
+
+-->
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
@@ -1216,10 +1259,10 @@ funcion = decorador(funcion)
 				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 				{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 				{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-				{ src: '/socket.io/socket.io.js', async: true },
-				{ src: 'notes-server/client.js', async: true },
+				// { src: '/socket.io/socket.io.js', async: true },
+				// { src: 'notes-server/client.js', async: true },
 				// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-				// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 		]
 		});
 
