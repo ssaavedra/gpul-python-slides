@@ -21,7 +21,7 @@
                 .on("swipe-up", function(e){ Reveal.down(); })
                 .on("swipe-down", function(e){ Reveal.up(); })
                 .on("tap", function(e){ Reveal.next(); })
-		.on("hols", function(e){ Reveal.prev(); });
+		.on("hold", function(e){ Reveal.prev(); });
         } );
 
         head.js('https://raw.github.com/Remotes/Remotes/master/dist/remotes.ne.min.js');
