@@ -4,6 +4,7 @@
  */
 
 (function(window){
+    if ( window.location.search.match( /receiver/gi ) ) { return; }
 
     /**
      * Detects if we are dealing with a touch enabled device (with some false positives)
