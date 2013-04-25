@@ -290,31 +290,38 @@ l.delete(pos)</code></pre>
 			<section class="demo">
 
 				<aside class="notes">
-				DEMO.
-
-				<pre>
-#Definir unha lista
-l = [0,1, 2, 4, 3, 7]
-l = range(8)
+<pre>l = [0,1, 2, 4, 3, 7]
+l = range(8) #Funcion range
 l[0]
-l[6]
 l[-3]
 l[1:4]
 l.append(5)
-
 l.pop()
-
 l2 = l[1:4]
-
 l3 = l + l2
 
 tupla = (1, 2, 3)
 tupla1 = (1,)
-
 tupla[1]
-
 len(tupla)
-				</pre>
+x = 32
+y ="hola"
+x,y = y,x
+
+d = {}
+d["hola"] = "gpul"
+d["adios"] = "patentes"
+d
+d[43] = 32
+del(d[43])
+
+set(d)
+set(t)
+set(l)
+l = l + l
+conx = set(l) #Non hai elementos repetidos.
+3 in conx
+conx.add(4)</pre>
 				</aside>
 			</section>
 
@@ -484,14 +491,6 @@ funcion_binaria_default(b=78);</code></pre>
 		# Non é un pato</code></pre>
 			</section>
 
-
-			<section class="demo">
-				<aside class="notes">
-				DEMO.
-
-				</aside>
-
-			</section>
 		</section>
 
 <!-- - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - ✂ - -->
@@ -517,7 +516,33 @@ except Exception:
 
 			<section class="demo">
 				<aside class="notes">
-				DEMO.
+<pre>if True:
+	print "hola"
+
+if 0:
+	print "hola"
+else:
+	print "adios"
+
+if []:
+	print "a"
+elif 3:
+	print "b"
+
+while 1:
+	print 42
+
+for l in "holamundo":
+	print l*2
+
+l = range(20)
+try:
+	i = 0
+	while True:
+		print l[i]
+		i = i + 1
+except IndexError:
+	print "FIN"</pre>
 				</aside>
 
 			</section>
